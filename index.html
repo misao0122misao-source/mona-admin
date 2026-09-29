@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>管理后台｜スタッフ打刻</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      background: #f5f5f7;
+      color: #222;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 380px;
+      background: white;
+      border-radius: 20px;
+      padding: 30px 24px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.08);
+      text-align: center;
+    }
+
+    .login-box h1 {
+      margin: 0 0 8px;
+      font-size: 25px;
+    }
+
+    .login-box p {
+      color: #777;
+      margin-bottom: 25px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    .login-box button {
+      width: 100%;
+      border: 0;
+      background: #222;
+      color: white;
+      padding: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .login-error {
+      color: #d00;
+      margin-top: 12px;
+      font-size: 14px;
+      min-height: 20px;
+    }
+
+    .app {
+      display: none;
+      min-height: 100vh;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid #e5e5e5;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .title-area h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .title-area p {
+      margin: 4px 0 0;
+      color: #888;
+      font-size: 13px;
+    }
+
+    .logout-btn {
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 9px;
+      padding: 9px 13px;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .filters {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.04);
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .field {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #ddd;
+      border-radius: 9px;
+      background: white;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 9px;
+      padding: 11px 16px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-main {
+      background: #222;
+      color: white;
+    }
+
+    .btn-light {
+      background: #eee;
+      color: #222;
+    }
+
+    .btn-danger {
+      background: #ffe8e8;
+      color: #c00;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .summary-card {
+      background: white;
+      border-radius: 15px;
+      padding: 18px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.04);
+    }
+
+    .summary-card .label {
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .summary-card .value {
+      font-size: 25px;
+      font-weight: 700;
+    }
+
+    .table-box {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 15px rgba(0,0,0,.04);
+    }
+
+    .table-header {
+      padding: 17px 18px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .table-header h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+
+    th,
+    td {
+      padding: 13px 12px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    th {
+      background: #fafafa;
+      font-size: 13px;
+      color: #666;
+    }
+
+    td {
+      font-size: 14px;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .status-working {
+      color: #007a32;
+      font-weight: 600;
+    }
+
+    .status-finished {
+      color: #555;
+    }
+
+    .empty {
+      padding: 40px 20px;
+      text-align: center;
+      color: #888;
+    }
+
+    .message {
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .message.error {
+      display: block;
+      background: #fff0f0;
+      color: #c00;
+    }
+
+    .message.success {
+      display: block;
+      background: #effaf2;
+      color: #08752c;
+    }
+
+    /* Modal */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .modal-box h2 {
+      margin-top: 0;
+    }
+
+    .modal-field {
+      margin-bottom: 14px;
+    }
+
+    .modal-field label {
+      display: block;
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .modal-field input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 9px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .modal-actions button {
+      flex: 1;
+    }
+
+    @media (max-width: 700px) {
+
+      .summary {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      .title-area h1 {
+        font-size: 19px;
+      }
+
+      main {
+        padding: 12px;
+      }
+
+      .filters {
+        padding: 14px;
+      }
+
+      .filter-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .filter-row .field:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .filter-row .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================= -->
+<!-- LOGIN -->
+<!-- ============================= -->
+
+<div class="login-screen" id="loginScreen">
+
+  <div class="login-box">
+
+    <h1>管理者ログイン</h1>
+
+    <p>スタッフ打刻管理</p>
+
+    <input
+      type="password"
+      id="passwordInput"
+      placeholder="パスワード"
+      autocomplete="current-password"
+    >
+
+    <button onclick="login()">
+      ログイン
+    </button>
+
+    <div class="login-error" id="loginError"></div>
+
+  </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- APP -->
+<!-- ============================= -->
+
+<div class="app" id="app">
+
+  <header>
+
+    <div class="header-inner">
+
+      <div class="title-area">
+
+        <h1>スタッフ打刻管理</h1>
+
+        <p>Nail Salon 管理者ページ</p>
+
+      </div>
+
+      <button
+        class="logout-btn"
+        onclick="logout()"
+      >
+        ログアウト
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <div id="message" class="message"></div>
+
+
+    <!-- FILTER -->
+
+    <section class="filters">
+
+      <div class="filter-row">
+
+        <div class="field">
+
+          <label>日付</label>
+
+          <input
+            type="date"
+            id="dateInput"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>スタッフ</label>
+
+          <select id="staffFilter">
+
+            <option value="">全員</option>
+
+          </select>
+
+        </div>
+
+
+        <button
+          class="btn btn-main"
+          onclick="loadRecords()"
+        >
+          🔍 検索
+        </button>
+
+
+        <button
+          class="btn btn-light"
+          onclick="setToday()"
+        >
+          今日
+        </button>
+
+
+        <button
+          class="btn btn-light"
+          onclick="loadRecords()"
+        >
+          🔄 更新
+        </button>
+
+
+        <button
+          class="btn btn-light"
+          onclick="exportCSV()"
+        >
+          📥 CSV
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+
+    <section class="summary">
+
+      <div class="summary-card">
+
+        <div class="label">
+          打刻人数
+        </div>
+
+        <div class="value" id="peopleCount">
+          0
+        </div>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <div class="label">
+          出勤中
+        </div>
+
+        <div class="value" id="workingCount">
+          0
+        </div>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <div class="label">
+          完了
+        </div>
+
+        <div class="value" id="finishedCount">
+          0
+        </div>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <div class="label">
+          合計勤務時間
+        </div>
+
+        <div class="value" id="totalHours">
+          0:00
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TABLE -->
+
+    <section class="table-box">
+
+      <div class="table-header">
+
+        <h2>
+          本日の打刻
+        </h2>
+
+        <div id="recordCount">
+          0件
+        </div>
+
+      </div>
+
+
+      <div class="table-scroll">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>スタッフ</th>
+
+              <th>出勤</th>
+
+              <th>退勤</th>
+
+              <th>勤務時間</th>
+
+              <th>状態</th>
+
+              <th>操作</th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="recordsBody">
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- EDIT MODAL -->
+<!-- ============================= -->
+
+<div class="modal" id="editModal">
+
+  <div class="modal-box">
+
+    <h2>打刻を編集</h2>
+
+    <div class="modal-field">
+
+      <label>スタッフ</label>
+
+      <input
+        type="text"
+        id="editStaff"
+        disabled
+      >
+
+    </div>
+
+
+    <div class="modal-field">
+
+      <label>出勤時間</label>
+
+      <input
+        type="datetime-local"
+        id="editClockIn"
+      >
+
+    </div>
+
+
+    <div class="modal-field">
+
+      <label>退勤時間</label>
+
+      <input
+        type="datetime-local"
+        id="editClockOut"
+      >
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        class="btn btn-light"
+        onclick="closeModal()"
+      >
+        キャンセル
+      </button>
+
+      <button
+        class="btn btn-main"
+        onclick="saveEdit()"
+      >
+        保存
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  /* ==========================================
+     SUPABASE
+  ========================================== */
+
+  const SUPABASE_URL =
+    "https://isspcmbqmwgvchkttief.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_5V4yaPwaEzSRXbN054Qyag_MpT7EZtX";
+
+  const API_URL =
+    SUPABASE_URL + "/rest/v1";
+
+
+  /* ==========================================
+     管理员密码
+  ========================================== */
+
+  const ADMIN_PASSWORD = "123456";
+
+
+  /* ==========================================
+     DATA
+  ========================================== */
+
+  let staffList = [];
+
+  let records = [];
+
+  let editingRecordId = null;
+
+
+  /* ==========================================
+     API
+  ========================================== */
+
+  async function apiFetch(path, options = {}) {
+
+    const headers = {
+
+      "apikey": SUPABASE_KEY,
+
+      "Authorization":
+        "Bearer " + SUPABASE_KEY,
+
+      "Content-Type":
+        "application/json",
+
+      ...(options.headers || {})
+
+    };
+
+
+    const response = await fetch(
+      API_URL + path,
+      {
+        ...options,
+        headers
+      }
+    );
+
+
+    const text =
+      await response.text();
+
+
+    let data = null;
+
+
+    try {
+
+      data =
+        text ? JSON.parse(text) : null;
+
+    } catch {
+
+      data = text;
+
+    }
+
+
+    if (!response.ok) {
+
+      const message =
+        data?.message ||
+        data?.error_description ||
+        data?.hint ||
+        text ||
+        ("HTTP " + response.status);
+
+      throw new Error(
+        message
+      );
+
+    }
+
+
+    return data;
+
+  }
+
+
+  /* ==========================================
+     LOGIN
+  ========================================== */
+
+  function login() {
+
+    const password =
+      document.getElementById(
+        "passwordInput"
+      ).value;
+
+
+    if (
+      password !== ADMIN_PASSWORD
+    ) {
+
+      document.getElementById(
+        "loginError"
+      ).textContent =
+        "パスワードが違います。";
+
+      return;
+
+    }
+
+
+    localStorage.setItem(
+      "mona_admin_login",
+      "true"
+    );
+
+
+    showApp();
+
+  }
+
+
+  function logout() {
+
+    localStorage.removeItem(
+      "mona_admin_login"
+    );
+
+    location.reload();
+
+  }
+
+
+  function showApp() {
+
+    document.getElementById(
+      "loginScreen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+      "app"
+    ).style.display = "block";
+
+
+    setToday();
+
+
+    loadStaff();
+
+  }
+
+
+  /* ==========================================
+     DATE
+  ========================================== */
+
+  function getJapanDate() {
+
+    return new Intl.DateTimeFormat(
+      "en-CA",
+      {
+        timeZone: "Asia/Tokyo",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }
+    ).format(
+      new Date()
+    );
+
+  }
+
+
+  function setToday() {
+
+    document.getElementById(
+      "dateInput"
+    ).value =
+      getJapanDate();
+
+  }
+
+
+  /* ==========================================
+     STAFF
+  ========================================== */
+
+  async function loadStaff() {
+
+    try {
+
+      staffList =
+        await apiFetch(
+          "/staff?select=id,name,active,sort_order&active=eq.true&order=sort_order.asc"
+        );
+
+
+      const select =
+        document.getElementById(
+          "staffFilter"
+        );
+
+
+      select.innerHTML =
+        '<option value="">全員</option>';
+
+
+      staffList.forEach(
+        staff => {
+
+          const option =
+            document.createElement(
+              "option"
+            );
+
+          option.value =
+            staff.id;
+
+          option.textContent =
+            staff.name;
+
+          select.appendChild(
+            option
+          );
+
+        }
+      );
+
+
+      await loadRecords();
+
+    } catch (error) {
+
+      showMessage(
+        "スタッフ読み込み失敗: " +
+        error.message,
+        true
+      );
+
+    }
+
+  }
+
+
+  /* ==========================================
+     RECORDS
+  ========================================== */
+
+  async function loadRecords() {
+
+    const date =
+      document.getElementById(
+        "dateInput"
+      ).value;
+
+
+    const staffId =
+      document.getElementById(
+        "staffFilter"
+      ).value;
+
+
+    if (!date) {
+
+      return;
+
+    }
+
+
+    try {
+
+      let query =
+        "/attendance" +
+        "?select=id,staff_id,work_date,clock_in,clock_out,created_at" +
+        "&work_date=eq." +
+        encodeURIComponent(date) +
+        "&order=clock_in.asc";
+
+
+      if (staffId) {
+
+        query +=
+          "&staff_id=eq." +
+          encodeURIComponent(staffId);
+
+      }
+
+
+      records =
+        await apiFetch(
+          query
+        );
+
+
+      renderRecords();
+
+
+    } catch (error) {
+
+      showMessage(
+        "打刻データ読み込み失敗: " +
+        error.message,
+        true
+      );
+
+    }
+
+  }
+
+
+  /* ==========================================
+     RENDER
+  ========================================== */
+
+  function renderRecords() {
+
+    const body =
+      document.getElementById(
+        "recordsBody"
+      );
+
+
+    body.innerHTML = "";
+
+
+    let working = 0;
+
+    let finished = 0;
+
+    let totalMinutes = 0;
+
+
+    const people =
+      new Set();
+
+
+    if (
+      !records ||
+      records.length === 0
+    ) {
+
+      body.innerHTML = `
+        <tr>
+          <td colspan="6">
+            <div class="empty">
+              この日の打刻記録はありません。
+            </div>
+          </td>
+        </tr>
+      `;
+
+      updateSummary(
+        0,
+        0,
+        0,
+        0
+      );
+
+      return;
+
+    }
+
+
+    records.forEach(
+      record => {
+
+        const staff =
+          staffList.find(
+            s =>
+              s.id ===
+              record.staff_id
+          );
+
+
+        const name =
+          staff
+            ? staff.name
+            : "不明";
+
+
+        people.add(
+          record.staff_id
+        );
+
+
+        const clockIn =
+          formatTime(
+            record.clock_in
+          );
+
+
+        const clockOut =
+          record.clock_out
+            ? formatTime(
+                record.clock_out
+              )
+            : "—";
+
+
+        let duration = "—";
+
+
+        if (
+          record.clock_in &&
+          record.clock_out
+        ) {
+
+          const minutes =
+            calculateMinutes(
+              record.clock_in,
+              record.clock_out
+            );
+
+
+          totalMinutes +=
+            minutes;
+
+
+          duration =
+            formatDuration(
+              minutes
+            );
+
+
+          finished++;
+
+        } else {
+
+          working++;
+
+        }
+
+
+        const tr =
+          document.createElement(
+            "tr"
+          );
+
+
+        tr.innerHTML = `
+
+          <td>
+            <strong>
+              ${escapeHtml(name)}
+            </strong>
+          </td>
+
+          <td>
+            ${clockIn}
+          </td>
+
+          <td>
+            ${clockOut}
+          </td>
+
+          <td>
+            <strong>
+              ${duration}
+            </strong>
+          </td>
+
+          <td>
+            ${
+              record.clock_out
+              ? '<span class="status-finished">退勤済</span>'
+              : '<span class="status-working">出勤中</span>'
+            }
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-light"
+              onclick="openEdit('${record.id}')"
+            >
+              ✏️ 編集
+            </button>
+
+            <button
+              class="btn btn-danger"
+              onclick="deleteRecord('${record.id}')"
+            >
+              🗑
+            </button>
+
+          </td>
+
+        `;
+
+
+        body.appendChild(
+          tr
+        );
+
+      }
+    );
+
+
+    updateSummary(
+      people.size,
+      working,
+      finished,
+      totalMinutes
+    );
+
+
+    document.getElementById(
+      "recordCount"
+    ).textContent =
+      records.length + "件";
+
+  }
+
+
+  /* ==========================================
+     SUMMARY
+  ========================================== */
+
+  function updateSummary(
+    people,
+    working,
+    finished,
+    minutes
+  ) {
+
+    document.getElementById(
+      "peopleCount"
+    ).textContent =
+      people;
+
+
+    document.getElementById(
+      "workingCount"
+    ).textContent =
+      working;
+
+
+    document.getElementById(
+      "finishedCount"
+    ).textContent =
+      finished;
+
+
+    document.getElementById(
+      "totalHours"
+    ).textContent =
+      formatDuration(
+        minutes
+      );
+
+  }
+
+
+  /* ==========================================
+     TIME
+  ========================================== */
+
+  function formatTime(
+    value
+  ) {
+
+    if (!value) {
+
+      return "—";
+
+    }
+
+
+    return new Intl.DateTimeFormat(
+      "ja-JP",
+      {
+        timeZone:
+          "Asia/Tokyo",
+
+        hour:
+          "2-digit",
+
+        minute:
+          "2-digit"
+      }
+    ).format(
+      new Date(value)
+    );
+
+  }
+
+
+  function calculateMinutes(
+    start,
+    end
+  ) {
+
+    const a =
+      new Date(start)
+        .getTime();
+
+
+    const b =
+      new Date(end)
+        .getTime();
+
+
+    return Math.max(
+      0,
+      Math.round(
+        (b - a) / 60000
+      )
+    );
+
+  }
+
+
+  function formatDuration(
+    minutes
+  ) {
+
+    const h =
+      Math.floor(
+        minutes / 60
+      );
+
+
+    const m =
+      minutes % 60;
+
+
+    return (
+      h +
+      ":" +
+      String(m)
+        .padStart(2, "0")
+    );
+
+  }
+
+
+  /* ==========================================
+     EDIT
+  ========================================== */
+
+  function openEdit(
+    id
+  ) {
+
+    const record =
+      records.find(
+        r =>
+          r.id === id
+      );
+
+
+    if (!record) {
+
+      return;
+
+    }
+
+
+    editingRecordId =
+      id;
+
+
+    const staff =
+      staffList.find(
+        s =>
+          s.id ===
+          record.staff_id
+      );
+
+
+    document.getElementById(
+      "editStaff"
+    ).value =
+      staff
+        ? staff.name
+        : "不明";
+
+
+    document.getElementById(
+      "editClockIn"
+    ).value =
+      toDatetimeLocal(
+        record.clock_in
+      );
+
+
+    document.getElementById(
+      "editClockOut"
+    ).value =
+      record.clock_out
+        ? toDatetimeLocal(
+            record.clock_out
+          )
+        : "";
+
+
+    document.getElementById(
+      "editModal"
+    ).classList.add(
+      "show"
+    );
+
+  }
+
+
+  function toDatetimeLocal(
+    value
+  ) {
+
+    if (!value) {
+
+      return "";
+
+    }
+
+
+    const date =
+      new Date(value);
+
+
+    const parts =
+      new Intl.DateTimeFormat(
+        "en-CA",
+        {
+          timeZone:
+            "Asia/Tokyo",
+
+          year:
+            "numeric",
+
+          month:
+            "2-digit",
+
+          day:
+            "2-digit",
+
+          hour:
+            "2-digit",
+
+          minute:
+            "2-digit",
+
+          hourCycle:
+            "h23"
+        }
+      ).formatToParts(
+        date
+      );
+
+
+    const obj = {};
+
+    parts.forEach(
+      p => {
+
+        obj[p.type] =
+          p.value;
+
+      }
+    );
+
+
+    return (
+      obj.year +
+      "-" +
+      obj.month +
+      "-" +
+      obj.day +
+      "T" +
+      obj.hour +
+      ":" +
+      obj.minute
+    );
+
+  }
+
+
+  function closeModal() {
+
+    document.getElementById(
+      "editModal"
+    ).classList.remove(
+      "show"
+    );
+
+    editingRecordId =
+      null;
+
+  }
+
+
+  async function saveEdit() {
+
+    if (
+      !editingRecordId
+    ) {
+
+      return;
+
+    }
+
+
+    const clockIn =
+      document.getElementById(
+        "editClockIn"
+      ).value;
+
+
+    const clockOut =
+      document.getElementById(
+        "editClockOut"
+      ).value;
+
+
+    if (!clockIn) {
+
+      alert(
+        "出勤時間を入力してください。"
+      );
+
+      return;
+
+    }
+
+
+    const payload = {
+
+      clock_in:
+        new Date(
+          clockIn
+        ).toISOString(),
+
+      clock_out:
+        clockOut
+          ? new Date(
+              clockOut
+            ).toISOString()
+          : null
+
+    };
+
+
+    try {
+
+      await apiFetch(
+        "/attendance?id=eq." +
+        encodeURIComponent(
+          editingRecordId
+        ),
+        {
+          method: "PATCH",
+
+          headers: {
+            "Prefer":
+              "return=minimal"
+          },
+
+          body:
+            JSON.stringify(
+              payload
+            )
+        }
+      );
+
+
+      closeModal();
+
+
+      showMessage(
+        "打刻を更新しました。"
+      );
+
+
+      await loadRecords();
+
+    } catch (error) {
+
+      alert(
+        "更新失敗: " +
+        error.message
+      );
+
+    }
+
+  }
+
+
+  /* ==========================================
+     DELETE
+  ========================================== */
+
+  async function deleteRecord(
+    id
+  ) {
+
+    const ok =
+      confirm(
+        "この打刻記録を削除しますか？"
+      );
+
+
+    if (!ok) {
+
+      return;
+
+    }
+
+
+    try {
+
+      await apiFetch(
+        "/attendance?id=eq." +
+        encodeURIComponent(
+          id
+        ),
+        {
+          method: "DELETE"
+        }
+      );
+
+
+      showMessage(
+        "削除しました。"
+      );
+
+
+      await loadRecords();
+
+    } catch (error) {
+
+      alert(
+        "削除失敗: " +
+        error.message
+      );
+
+    }
+
+  }
+
+
+  /* ==========================================
+     CSV
+  ========================================== */
+
+  function exportCSV() {
+
+    if (
+      !records ||
+      records.length === 0
+    ) {
+
+      alert(
+        "CSVにするデータがありません。"
+      );
+
+      return;
+
+    }
+
+
+    const rows = [
+
+      [
+        "日付",
+        "スタッフ",
+        "出勤",
+        "退勤",
+        "勤務時間",
+        "状態"
+      ]
+
+    ];
+
+
+    records.forEach(
+      record => {
+
+        const staff =
+          staffList.find(
+            s =>
+              s.id ===
+              record.staff_id
+          );
+
+
+        const name =
+          staff
+            ? staff.name
+            : "不明";
+
+
+        const duration =
+          record.clock_out
+            ? formatDuration(
+                calculateMinutes(
+                  record.clock_in,
+                  record.clock_out
+                )
+              )
+            : "";
+
+
+        rows.push([
+          record.work_date,
+          name,
+          formatTime(
+            record.clock_in
+          ),
+          record.clock_out
+            ? formatTime(
+                record.clock_out
+              )
+            : "",
+          duration,
+          record.clock_out
+            ? "退勤済"
+            : "出勤中"
+        ]);
+
+      }
+    );
+
+
+    const csv =
+      rows
+        .map(
+          row =>
+            row
+              .map(
+                value =>
+                  '"' +
+                  String(value)
+                    .replaceAll(
+                      '"',
+                      '""'
+                    ) +
+                  '"'
+              )
+              .join(",")
+        )
+        .join("\r\n");
+
+
+    const blob =
+      new Blob(
+        [
+          "\uFEFF" +
+          csv
+        ],
+        {
+          type:
+            "text/csv;charset=utf-8;"
+        }
+      );
+
+
+    const url =
+      URL.createObjectURL(
+        blob
+      );
+
+
+    const a =
+      document.createElement(
+        "a"
+      );
+
+
+    a.href =
+      url;
+
+
+    const date =
+      document.getElementById(
+        "dateInput"
+      ).value;
+
+
+    a.download =
+      "打刻_" +
+      date +
+      ".csv";
+
+
+    a.click();
+
+
+    URL.revokeObjectURL(
+      url
+    );
+
+  }
+
+
+  /* ==========================================
+     MESSAGE
+  ========================================== */
+
+  function showMessage(
+    text,
+    error = false
+  ) {
+
+    const box =
+      document.getElementById(
+        "message"
+      );
+
+
+    box.textContent =
+      text;
+
+
+    box.className =
+      "message " +
+      (
+        error
+          ? "error"
+          : "success"
+      );
+
+
+    setTimeout(
+      () => {
+
+        box.className =
+          "message";
+
+      },
+      3500
+    );
+
+  }
+
+
+  /* ==========================================
+     HTML ESCAPE
+  ========================================== */
+
+  function escapeHtml(
+    value
+  ) {
+
+    return String(value)
+      .replaceAll(
+        "&",
+        "&amp;"
+      )
+      .replaceAll(
+        "<",
+        "&lt;"
+      )
+      .replaceAll(
+        ">",
+        "&gt;"
+      )
+      .replaceAll(
+        '"',
+        "&quot;"
+      )
+      .replaceAll(
+        "'",
+        "&#039;"
+      );
+
+  }
+
+
+  /* ==========================================
+     START
+  ========================================== */
+
+  document
+    .getElementById(
+      "passwordInput"
+    )
+    .addEventListener(
+      "keydown",
+      function(event) {
+
+        if (
+          event.key ===
+          "Enter"
+        ) {
+
+          login();
+
+        }
+
+      }
+    );
+
+
+  if (
+    localStorage.getItem(
+      "mona_admin_login"
+    ) === "true"
+  ) {
+
+    showApp();
+
+  }
+
+</script>
+
+</body>
+</html>
