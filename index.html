@@ -1441,13 +1441,14 @@ async function deleteAttendanceRecord(
         String(r.id) ===
         String(id)
     );
+
   if (!record) {
     return;
   }
+
   const staff =
-    staffName(
-      record.staff_id
-    );
+    staffName(record.staff_id);
+
   const ok =
     confirm(
       `この打刻記録を削除しますか？\n\n` +
@@ -1457,24 +1458,70 @@ async function deleteAttendanceRecord(
       `退勤：${record.clock_out || "-"}\n\n` +
       `削除したデータは元に戻せません。`
     );
+
   if (!ok) {
     return;
   }
+
   try {
-    await supabaseFetch(
-      `/attendance?id=eq.${encodeURIComponent(id)}`,
-      {
-        method: "DELETE"
-      }
-    );
+
+    const deleted =
+      await supabaseFetch(
+        `/attendance?id=eq.${encodeURIComponent(id)}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Prefer": "return=representation"
+          }
+        }
+      );
+
+    /*
+     * Supabaseで実際に削除されたか確認
+     */
+    if (
+      !Array.isArray(deleted) ||
+      deleted.length === 0
+    ) {
+      throw new Error(
+        "データが削除されていません。Supabaseの削除権限を確認してください。"
+      );
+    }
+
+    /*
+     * 画面上のデータからも削除
+     */
+    attendanceRecords =
+      attendanceRecords.filter(
+        r =>
+          String(r.id) !==
+          String(id)
+      );
+
+    /*
+     * 画面を更新
+     */
+    renderAttendance();
+
+    /*
+     * Supabaseから再読み込み
+     */
     await loadAttendance();
+
     alert(
       "削除しました"
     );
+
   } catch(error) {
-    console.error(error);
+
+    console.error(
+      "Attendance delete error:",
+      error
+    );
+
     alert(
-      "削除に失敗しました"
+      "削除に失敗しました。\n\n" +
+      "Supabaseの削除権限を確認してください。"
     );
   }
 }
