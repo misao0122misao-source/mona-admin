@@ -3,14 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>サロン管理</title>
-
 <style>
 * {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
   font-family:
@@ -22,26 +19,21 @@ body {
   background: #f7f7f8;
   color: #222;
 }
-
 button,
 input,
 select,
 textarea {
   font: inherit;
 }
-
 button {
   cursor: pointer;
 }
-
 .hidden {
   display: none !important;
 }
-
 /* =========================
    LOGIN
 ========================= */
-
 #loginScreen {
   min-height: 100vh;
   display: flex;
@@ -50,7 +42,6 @@ button {
   padding: 20px;
   background: linear-gradient(135deg, #f8f1f5, #f5f5f5);
 }
-
 .login-box {
   width: 100%;
   max-width: 380px;
@@ -60,24 +51,20 @@ button {
   box-shadow: 0 10px 40px rgba(0,0,0,.08);
   text-align: center;
 }
-
 .login-logo {
   font-size: 30px;
   margin-bottom: 8px;
 }
-
 .login-title {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 6px;
 }
-
 .login-subtitle {
   color: #888;
   font-size: 14px;
   margin-bottom: 25px;
 }
-
 .password-input {
   width: 100%;
   height: 52px;
@@ -89,11 +76,9 @@ button {
   letter-spacing: 5px;
   outline: none;
 }
-
 .password-input:focus {
   border-color: #999;
 }
-
 .login-button {
   width: 100%;
   height: 52px;
@@ -104,17 +89,14 @@ button {
   color: white;
   font-weight: 600;
 }
-
 .login-error {
   color: #d33;
   font-size: 13px;
   margin-top: 12px;
 }
-
 /* =========================
    HEADER
 ========================= */
-
 header {
   position: sticky;
   top: 0;
@@ -123,7 +105,6 @@ header {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #eee;
 }
-
 .header-inner {
   max-width: 1100px;
   margin: auto;
@@ -133,12 +114,10 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-
 .header-title {
   font-size: 18px;
   font-weight: 700;
 }
-
 .logout-button {
   border: 1px solid #ddd;
   background: white;
@@ -146,46 +125,37 @@ header {
   padding: 8px 12px;
   font-size: 13px;
 }
-
 /* =========================
    MAIN
 ========================= */
-
 main {
   max-width: 1100px;
   margin: auto;
   padding: 20px 15px 50px;
 }
-
 .page {
   display: none;
 }
-
 .page.active {
   display: block;
 }
-
 /* =========================
    HOME
 ========================= */
-
 .home-title {
   font-size: 26px;
   font-weight: 700;
   margin: 10px 0 6px;
 }
-
 .home-date {
   color: #888;
   margin-bottom: 25px;
 }
-
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
 }
-
 .menu-card {
   border: 0;
   background: white;
@@ -194,27 +164,22 @@ main {
   text-align: left;
   box-shadow: 0 5px 20px rgba(0,0,0,.05);
 }
-
 .menu-icon {
   font-size: 32px;
   margin-bottom: 15px;
 }
-
 .menu-name {
   font-size: 18px;
   font-weight: 700;
 }
-
 .menu-description {
   margin-top: 6px;
   color: #888;
   font-size: 13px;
 }
-
 /* =========================
    PAGE HEADER
 ========================= */
-
 .page-header {
   display: flex;
   align-items: center;
@@ -223,19 +188,16 @@ main {
   margin-bottom: 18px;
   flex-wrap: wrap;
 }
-
 .page-title {
   font-size: 23px;
   font-weight: 700;
 }
-
 .back-button {
   border: 1px solid #ddd;
   background: white;
   border-radius: 10px;
   padding: 9px 13px;
 }
-
 .refresh-button {
   border: 0;
   background: #222;
@@ -243,11 +205,9 @@ main {
   border-radius: 10px;
   padding: 9px 13px;
 }
-
 /* =========================
    FILTER
 ========================= */
-
 .filter-box {
   background: white;
   border-radius: 16px;
@@ -255,25 +215,21 @@ main {
   margin-bottom: 15px;
   box-shadow: 0 4px 18px rgba(0,0,0,.04);
 }
-
 .filter-row {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
-
 .field {
   flex: 1;
   min-width: 150px;
 }
-
 .field label {
   display: block;
   font-size: 12px;
   color: #777;
   margin-bottom: 6px;
 }
-
 .field input,
 .field select,
 .field textarea {
@@ -285,45 +241,37 @@ main {
   background: white;
   outline: none;
 }
-
 .field textarea {
   min-height: 90px;
   resize: vertical;
 }
-
 /* =========================
    STATS
 ========================= */
-
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 18px;
 }
-
 .stat-card {
   background: white;
   border-radius: 15px;
   padding: 17px;
   box-shadow: 0 4px 18px rgba(0,0,0,.04);
 }
-
 .stat-label {
   font-size: 12px;
   color: #888;
 }
-
 .stat-value {
   margin-top: 7px;
   font-size: 22px;
   font-weight: 700;
 }
-
 /* =========================
    TABLE
 ========================= */
-
 .card {
   background: white;
   border-radius: 16px;
@@ -331,24 +279,20 @@ main {
   margin-bottom: 16px;
   box-shadow: 0 4px 18px rgba(0,0,0,.04);
 }
-
 .card-title {
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 14px;
 }
-
 .table-wrap {
   width: 100%;
   overflow-x: auto;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
   min-width: 700px;
 }
-
 th,
 td {
   padding: 11px 9px;
@@ -357,13 +301,11 @@ td {
   font-size: 13px;
   white-space: nowrap;
 }
-
 th {
   color: #777;
   font-weight: 600;
   background: #fafafa;
 }
-
 .action-button {
   border: 1px solid #ddd;
   background: white;
@@ -371,41 +313,33 @@ th {
   padding: 6px 9px;
   margin-right: 5px;
 }
-
 .delete-button {
   color: #c33;
 }
-
 /* =========================
    STAFF STATS
 ========================= */
-
 .staff-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
-
 .staff-stat {
   border: 1px solid #eee;
   border-radius: 12px;
   padding: 13px;
 }
-
 .staff-stat-name {
   font-weight: 700;
 }
-
 .staff-stat-number {
   color: #777;
   font-size: 13px;
   margin-top: 5px;
 }
-
 /* =========================
    MODAL
 ========================= */
-
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -415,7 +349,6 @@ th {
   align-items: flex-end;
   justify-content: center;
 }
-
 .modal {
   width: 100%;
   max-width: 650px;
@@ -425,47 +358,39 @@ th {
   border-radius: 22px 22px 0 0;
   padding: 20px;
 }
-
 .modal-title {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 18px;
 }
-
 .modal-actions {
   display: flex;
   gap: 10px;
   margin-top: 20px;
 }
-
 .modal-actions button {
   flex: 1;
   min-height: 48px;
   border-radius: 11px;
   border: 0;
 }
-
 .save-button {
   background: #222;
   color: white;
 }
-
 .cancel-button {
   background: #eee;
   color: #333;
 }
-
 /* =========================
    PAYMENTS
 ========================= */
-
 .payment-row {
   display: grid;
   grid-template-columns: 1fr 130px 45px;
   gap: 8px;
   margin-bottom: 9px;
 }
-
 .payment-row select,
 .payment-row input {
   width: 100%;
@@ -474,20 +399,17 @@ th {
   border-radius: 9px;
   padding: 8px;
 }
-
 .remove-payment {
   border: 0;
   background: #f3f3f3;
   border-radius: 9px;
 }
-
 .add-payment {
   border: 1px dashed #aaa;
   background: white;
   border-radius: 10px;
   padding: 9px 13px;
 }
-
 .total-box {
   background: #f7f7f7;
   border-radius: 11px;
@@ -497,90 +419,68 @@ th {
   justify-content: space-between;
   font-weight: 700;
 }
-
 /* =========================
    CSV
 ========================= */
-
 .export-button {
   border: 1px solid #ddd;
   background: white;
   border-radius: 10px;
   padding: 9px 13px;
 }
-
 /* =========================
    EMPTY
 ========================= */
-
 .empty {
   padding: 30px 10px;
   text-align: center;
   color: #999;
 }
-
 /* =========================
    MOBILE
 ========================= */
-
 @media (max-width: 700px) {
-
   main {
     padding-left: 12px;
     padding-right: 12px;
   }
-
   .menu-grid {
     grid-template-columns: 1fr;
   }
-
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .staff-grid {
     grid-template-columns: 1fr;
   }
-
   .page-title {
     font-size: 21px;
   }
-
   .filter-row {
     display: block;
   }
-
   .field {
     margin-bottom: 10px;
   }
-
   .modal {
     padding: 17px;
   }
 }
 </style>
 </head>
-
 <body>
-
 <!-- =========================
      LOGIN
 ========================= -->
-
 <div id="loginScreen">
-
   <div class="login-box">
-
     <div class="login-logo">💅</div>
-
     <div class="login-title">
       サロン管理
     </div>
-
     <div class="login-subtitle">
       管理画面にログインしてください
     </div>
-
     <input
       id="passwordInput"
       class="password-input"
@@ -590,179 +490,125 @@ th {
       placeholder="パスワード"
       maxlength="20"
     >
-
     <button
       class="login-button"
       onclick="login()"
     >
       ログイン
     </button>
-
     <div
       id="loginError"
       class="login-error hidden"
     >
       パスワードが違います
     </div>
-
   </div>
-
 </div>
-
-
 <!-- =========================
      APP
 ========================= -->
-
 <div id="app" class="hidden">
-
 <header>
-
   <div class="header-inner">
-
     <div class="header-title">
       💅 サロン管理
     </div>
-
     <button
       class="logout-button"
       onclick="logout()"
     >
       ログアウト
     </button>
-
   </div>
-
 </header>
-
-
 <main>
-
 <!-- =========================
      HOME
 ========================= -->
-
 <section
   id="homePage"
   class="page active"
 >
-
   <div class="home-title">
     サロン管理
   </div>
-
   <div
     id="homeDate"
     class="home-date"
   ></div>
-
-
   <div class="menu-grid">
-
     <button
       class="menu-card"
       onclick="showPage('attendancePage'); loadAttendance();"
     >
-
       <div class="menu-icon">
         ⏰
       </div>
-
       <div class="menu-name">
         打刻管理
       </div>
-
       <div class="menu-description">
         スタッフの出勤・退勤を管理
       </div>
-
     </button>
-
-
     <button
       class="menu-card"
       onclick="showPage('servicePage'); setServiceThisMonth(); loadServiceDashboard();"
     >
-
       <div class="menu-icon">
         💰
       </div>
-
       <div class="menu-name">
         サービス管理
       </div>
-
       <div class="menu-description">
         売上・お客様・支払いを管理
       </div>
-
     </button>
-
   </div>
-
 </section>
-
-
 <!-- =========================
      ATTENDANCE
 ========================= -->
-
 <section
   id="attendancePage"
   class="page"
 >
-
   <div class="page-header">
-
     <div class="page-title">
       打刻管理
     </div>
-
     <div>
-
       <button
         class="back-button"
         onclick="showPage('homePage')"
       >
         ← 戻る
       </button>
-
       <button
         class="refresh-button"
         onclick="loadAttendance()"
       >
         更新
       </button>
-
     </div>
-
   </div>
-
-
   <div class="filter-box">
-
     <div class="filter-row">
-
       <div class="field">
-
         <label>
           日付
         </label>
-
         <input
           type="date"
           id="attendanceDate"
           onchange="loadAttendance()"
         >
-
       </div>
-
       <div class="field">
-
         <label>
           スタッフ
         </label>
-
         <select
           id="attendanceStaff"
           onchange="loadAttendance()"
@@ -771,26 +617,16 @@ th {
             全員
           </option>
         </select>
-
       </div>
-
     </div>
-
   </div>
-
-
   <div class="card">
-
     <div class="card-title">
       打刻一覧
     </div>
-
     <div class="table-wrap">
-
       <table>
-
         <thead>
-
           <tr>
             <th>日付</th>
             <th>スタッフ</th>
@@ -798,276 +634,174 @@ th {
             <th>退勤</th>
             <th>操作</th>
           </tr>
-
         </thead>
-
         <tbody id="attendanceTableBody"></tbody>
-
       </table>
-
     </div>
-
   </div>
-
-
   <div class="card">
-
     <div class="card-title">
       CSV出力
     </div>
-
     <button
       class="export-button"
       onclick="exportAttendanceCSV()"
     >
       CSVをダウンロード
     </button>
-
   </div>
-
 </section>
-
-
 <!-- =========================
      SERVICE
 ========================= -->
-
 <section
   id="servicePage"
   class="page"
 >
-
   <div class="page-header">
-
     <div class="page-title">
       サービス管理
     </div>
-
     <div>
-
       <button
         class="back-button"
         onclick="showPage('homePage')"
       >
         ← 戻る
       </button>
-
       <button
         class="refresh-button"
         onclick="loadServiceDashboard()"
       >
         更新
       </button>
-
     </div>
-
   </div>
-
-
-  <!-- FILTER -->
-
   <div class="filter-box">
-
     <div class="filter-row">
-
       <div class="field">
-
         <label>
           開始日
         </label>
-
         <input
           type="date"
           id="serviceStartDate"
           onchange="loadServiceDashboard()"
         >
-
       </div>
-
-
       <div class="field">
-
         <label>
           終了日
         </label>
-
         <input
           type="date"
           id="serviceEndDate"
           onchange="loadServiceDashboard()"
         >
-
       </div>
-
-
       <div class="field">
-
         <label>
           スタッフ
         </label>
-
         <select
           id="serviceStaffFilter"
           onchange="loadServiceDashboard()"
         >
-
           <option value="">
             全員
           </option>
-
         </select>
-
       </div>
-
     </div>
-
   </div>
-
-
-  <!-- STATS -->
-
   <div class="stats-grid">
-
     <div class="stat-card">
-
       <div class="stat-label">
         売上
       </div>
-
       <div
         id="serviceTotalSales"
         class="stat-value"
       >
         ¥0
       </div>
-
     </div>
-
-
     <div class="stat-card">
-
       <div class="stat-label">
         件数
       </div>
-
       <div
         id="serviceRecordCount"
         class="stat-value"
       >
         0
       </div>
-
     </div>
-
-
     <div class="stat-card">
-
       <div class="stat-label">
         平均単価
       </div>
-
       <div
         id="serviceAverage"
         class="stat-value"
       >
         ¥0
       </div>
-
     </div>
-
-
     <div class="stat-card">
-
       <div class="stat-label">
         お客様数
       </div>
-
       <div
         id="serviceCustomerCount"
         class="stat-value"
       >
         0
       </div>
-
     </div>
-
   </div>
-
-
-  <!-- PAYMENT -->
-
   <div class="card">
-
     <div class="card-title">
       支払い方法別
     </div>
-
     <div
       id="paymentStats"
       class="staff-grid"
     ></div>
-
   </div>
-
-
-  <!-- STAFF -->
-
   <div class="card">
-
     <div class="card-title">
       スタッフ別売上
     </div>
-
     <div
       id="serviceStaffStats"
       class="staff-grid"
     ></div>
-
   </div>
-
-
-  <!-- SOURCE -->
-
   <div class="card">
-
     <div class="card-title">
       お客様の来源
     </div>
-
     <div
       id="serviceSourceStats"
       class="staff-grid"
     ></div>
-
   </div>
-
-
-  <!-- RECORDS -->
-
   <div class="card">
-
     <div class="page-header">
-
       <div class="card-title">
         サービス記録
       </div>
-
       <button
         class="export-button"
         onclick="exportServiceCSV()"
       >
         CSV出力
       </button>
-
     </div>
-
-
     <div class="table-wrap">
-
       <table>
-
         <thead>
-
           <tr>
             <th>日付</th>
             <th>時間</th>
@@ -1078,218 +812,142 @@ th {
             <th>合計</th>
             <th>操作</th>
           </tr>
-
         </thead>
-
         <tbody id="serviceTableBody"></tbody>
-
       </table>
-
     </div>
-
   </div>
-
 </section>
-
 </main>
-
 </div>
-
-
 <!-- =========================
      ATTENDANCE MODAL
 ========================= -->
-
 <div
   id="attendanceModal"
   class="modal-backdrop hidden"
 >
-
   <div class="modal">
-
     <div class="modal-title">
       打刻を編集
     </div>
-
-
     <input
       type="hidden"
       id="editAttendanceId"
     >
-
-
     <div class="field">
-
       <label>
         出勤時間
       </label>
-
       <input
         type="time"
         id="editClockIn"
       >
-
     </div>
-
-
     <div class="field">
-
       <label>
         退勤時間
       </label>
-
       <input
         type="time"
         id="editClockOut"
       >
-
     </div>
-
-
     <div class="modal-actions">
-
       <button
         class="cancel-button"
         onclick="closeAttendanceModal()"
       >
         キャンセル
       </button>
-
       <button
         class="save-button"
         onclick="saveAttendanceEdit()"
       >
         保存
       </button>
-
     </div>
-
   </div>
-
 </div>
-
-
 <!-- =========================
      SERVICE MODAL
 ========================= -->
-
 <div
   id="serviceModal"
   class="modal-backdrop hidden"
 >
-
   <div class="modal">
-
     <div class="modal-title">
       サービス記録を編集
     </div>
-
-
     <input
       type="hidden"
       id="editServiceId"
     >
-
-
     <div class="field">
-
       <label>
         日付
       </label>
-
       <input
         type="date"
         id="editServiceDate"
       >
-
     </div>
-
-
     <div class="field">
-
       <label>
         時間
       </label>
-
       <input
         type="time"
         id="editServiceTime"
       >
-
     </div>
-
-
     <div class="field">
-
       <label>
         お客様の名前
       </label>
-
       <input
         type="text"
         id="editCustomerName"
         placeholder="例：田中さん、王小姐"
       >
-
     </div>
-
-
     <div class="field">
-
       <label>
         担当スタッフ
       </label>
-
       <select id="editServiceStaff"></select>
-
     </div>
-
-
     <div class="field">
-
       <label>
         お客様の来源
       </label>
-
       <select id="editCustomerSource">
-
         <option value="Hot Pepper">
           Hot Pepper
         </option>
-
         <option value="ネイリー">
           ネイリー
         </option>
-
         <option value="ミニモ">
           ミニモ
         </option>
-
         <option value="微信">
           微信
         </option>
-
         <option value="小紅書">
           小紅書
         </option>
-
         <option value="その他">
           その他
         </option>
-
       </select>
-
     </div>
-
-
     <div class="field">
-
       <label>
         支払い
       </label>
-
       <div id="editPayments"></div>
-
       <button
         type="button"
         class="add-payment"
@@ -1297,175 +955,116 @@ th {
       >
         ＋支払いを追加
       </button>
-
     </div>
-
-
     <div class="total-box">
-
       <span>
         合計
       </span>
-
       <span id="editServiceTotal">
         ¥0
       </span>
-
     </div>
-
-
     <div class="field">
-
       <label>
         メモ
       </label>
-
       <textarea
         id="editServiceNote"
         placeholder="メモ（任意）"
       ></textarea>
-
     </div>
-
-
     <div class="modal-actions">
-
       <button
         class="cancel-button"
         onclick="closeServiceModal()"
       >
         キャンセル
       </button>
-
       <button
         class="save-button"
         onclick="saveServiceEdit()"
       >
         保存
       </button>
-
     </div>
-
   </div>
-
 </div>
-
-
 <script>
-
 /* =========================================================
    SUPABASE
 ========================================================= */
-
 const SUPABASE_URL =
   "https://isspcmbqmwgvchkttief.supabase.co";
-
 const SUPABASE_KEY =
   "sb_publishable_5V4yaPwaEzSRXbN054Qyag_MpT7EZtX";
-
 const API_URL =
   SUPABASE_URL + "/rest/v1";
-
-
 /* =========================================================
    ADMIN PASSWORD
 ========================================================= */
-
 const ADMIN_PASSWORD = "0122";
-
-
 /* =========================================================
    DATA
 ========================================================= */
-
 let staffList = [];
 let attendanceRecords = [];
 let serviceRecords = [];
 let servicePayments = [];
-
-
 /* =========================================================
    LOGIN
 ========================================================= */
-
 function login() {
-
   const input =
     document.getElementById("passwordInput").value;
-
   const error =
     document.getElementById("loginError");
-
-
   if (input === ADMIN_PASSWORD) {
-
     sessionStorage.setItem(
       "mona_admin_login",
       "true"
     );
-
     document
       .getElementById("loginScreen")
       .classList.add("hidden");
-
     document
       .getElementById("app")
       .classList.remove("hidden");
-
     initializeApp();
-
   } else {
-
     error.classList.remove("hidden");
-
     document
       .getElementById("passwordInput")
       .select();
-
   }
 }
-
-
 document
   .getElementById("passwordInput")
   .addEventListener(
     "keydown",
     function(e) {
-
       if (e.key === "Enter") {
         login();
       }
-
     }
   );
-
-
 function logout() {
-
   sessionStorage.removeItem(
     "mona_admin_login"
   );
-
   location.reload();
-
 }
-
-
 /* =========================================================
    SUPABASE FETCH
 ========================================================= */
-
 async function supabaseFetch(
   endpoint,
   options = {}
 ) {
-
   const response =
     await fetch(
       API_URL + endpoint,
       {
         ...options,
-
         headers: {
           "apikey": SUPABASE_KEY,
           "Authorization":
@@ -1476,65 +1075,39 @@ async function supabaseFetch(
         }
       }
     );
-
-
   if (!response.ok) {
-
     const text =
       await response.text();
-
     throw new Error(
       text || "Supabase error"
     );
-
   }
-
-
   if (
     response.status === 204
   ) {
     return null;
   }
-
-
   return response.json();
-
 }
-
-
 /* =========================================================
    INITIALIZE
 ========================================================= */
-
 async function initializeApp() {
-
   setHomeDate();
-
   try {
-
     await loadStaff();
-
     fillStaffFilters();
-
   } catch(error) {
-
     console.error(error);
-
     alert(
       "スタッフ情報の読み込みに失敗しました。"
     );
-
   }
-
 }
-
-
 /* =========================================================
    DATE
 ========================================================= */
-
 function japanDate() {
-
   return new Intl.DateTimeFormat(
     "ja-JP",
     {
@@ -1546,12 +1119,8 @@ function japanDate() {
   ).format(
     new Date()
   );
-
 }
-
-
 function todayISO() {
-
   const parts =
     new Intl.DateTimeFormat(
       "en-CA",
@@ -1564,43 +1133,30 @@ function todayISO() {
     ).formatToParts(
       new Date()
     );
-
   const y =
     parts.find(
       x => x.type === "year"
     ).value;
-
   const m =
     parts.find(
       x => x.type === "month"
     ).value;
-
   const d =
     parts.find(
       x => x.type === "day"
     ).value;
-
   return `${y}-${m}-${d}`;
-
 }
-
-
 function setHomeDate() {
-
   document.getElementById(
     "homeDate"
   ).textContent =
     japanDate();
-
 }
-
-
 /* =========================================================
    PAGE
 ========================================================= */
-
 function showPage(pageId) {
-
   document
     .querySelectorAll(".page")
     .forEach(
@@ -1609,197 +1165,127 @@ function showPage(pageId) {
           "active"
         )
     );
-
-
   document
     .getElementById(pageId)
     .classList.add("active");
-
 }
-
-
 /* =========================================================
    STAFF
 ========================================================= */
-
 async function loadStaff() {
-
   staffList =
     await supabaseFetch(
       "/staff?select=id,name,active,sort_order&active=eq.true&order=sort_order.asc"
     );
-
 }
-
-
 function fillStaffFilters() {
-
   const attendanceSelect =
     document.getElementById(
       "attendanceStaff"
     );
-
   const serviceSelect =
     document.getElementById(
       "serviceStaffFilter"
     );
-
   const editSelect =
     document.getElementById(
       "editServiceStaff"
     );
-
-
   attendanceSelect.innerHTML =
     `<option value="">全員</option>`;
-
   serviceSelect.innerHTML =
     `<option value="">全員</option>`;
-
   editSelect.innerHTML =
     "";
-
-
   staffList.forEach(
     staff => {
-
       const option1 =
         document.createElement(
           "option"
         );
-
       option1.value =
         staff.id;
-
       option1.textContent =
         staff.name;
-
       attendanceSelect.appendChild(
         option1
       );
-
-
       const option2 =
         document.createElement(
           "option"
         );
-
       option2.value =
         staff.id;
-
       option2.textContent =
         staff.name;
-
       serviceSelect.appendChild(
         option2
       );
-
-
       const option3 =
         document.createElement(
           "option"
         );
-
       option3.value =
         staff.id;
-
       option3.textContent =
         staff.name;
-
       editSelect.appendChild(
         option3
       );
-
     }
   );
-
 }
-
-
 /* =========================================================
    ATTENDANCE
 ========================================================= */
-
 async function loadAttendance() {
-
   const date =
     document.getElementById(
       "attendanceDate"
     ).value || todayISO();
-
-
   document.getElementById(
     "attendanceDate"
   ).value = date;
-
-
   const staffId =
     document.getElementById(
       "attendanceStaff"
     ).value;
-
-
   let query =
     `/attendance?select=*&work_date=eq.${date}&order=clock_in.asc`;
-
-
   if (staffId) {
-
     query +=
       `&staff_id=eq.${encodeURIComponent(staffId)}`;
-
   }
-
-
   try {
-
     attendanceRecords =
       await supabaseFetch(
         query
       );
-
-
     renderAttendance();
-
   } catch(error) {
-
     console.error(error);
-
     alert(
       "打刻データの読み込みに失敗しました。"
     );
-
   }
-
 }
-
-
 function staffName(staffId) {
-
   const staff =
     staffList.find(
       s => s.id === staffId
     );
-
   return staff
     ? staff.name
     : "-";
-
 }
-
-
 function renderAttendance() {
-
   const body =
     document.getElementById(
       "attendanceTableBody"
     );
-
-
   if (
     !attendanceRecords.length
   ) {
-
     body.innerHTML =
       `<tr>
         <td colspan="5">
@@ -1808,26 +1294,19 @@ function renderAttendance() {
           </div>
         </td>
       </tr>`;
-
     return;
-
   }
-
-
   body.innerHTML =
     attendanceRecords
       .map(
         record => {
-
           return `
             <tr>
-
               <td>
                 ${escapeHtml(
                   record.work_date || ""
                 )}
               </td>
-
               <td>
                 ${escapeHtml(
                   staffName(
@@ -1835,75 +1314,63 @@ function renderAttendance() {
                   )
                 )}
               </td>
-
               <td>
                 ${escapeHtml(
                   record.clock_in || "-"
                 )}
               </td>
-
               <td>
                 ${escapeHtml(
                   record.clock_out || "-"
                 )}
               </td>
-
               <td>
-
                 <button
                   class="action-button"
                   onclick="openAttendanceModal('${record.id}')"
                 >
                   編集
                 </button>
-
+                <button
+                  class="action-button delete-button"
+                  onclick="deleteAttendanceRecord('${record.id}')"
+                >
+                  削除
+                </button>
               </td>
-
             </tr>
           `;
-
         }
       )
       .join("");
-
 }
-
-
+/* =========================================================
+   ATTENDANCE EDIT
+========================================================= */
 function openAttendanceModal(
   recordId
 ) {
-
   const record =
     attendanceRecords.find(
       r =>
         String(r.id) ===
         String(recordId)
     );
-
-
   if (!record) {
     return;
   }
-
-
   document.getElementById(
     "editAttendanceId"
   ).value =
     record.id;
-
-
   document.getElementById(
     "editClockIn"
   ).value =
     record.clock_in || "";
-
-
   document.getElementById(
     "editClockOut"
   ).value =
     record.clock_out || "";
-
-
   document
     .getElementById(
       "attendanceModal"
@@ -1911,12 +1378,8 @@ function openAttendanceModal(
     .classList.remove(
       "hidden"
     );
-
 }
-
-
 function closeAttendanceModal() {
-
   document
     .getElementById(
       "attendanceModal"
@@ -1924,32 +1387,21 @@ function closeAttendanceModal() {
     .classList.add(
       "hidden"
     );
-
 }
-
-
 async function saveAttendanceEdit() {
-
   const id =
     document.getElementById(
       "editAttendanceId"
     ).value;
-
-
   const clockIn =
     document.getElementById(
       "editClockIn"
     ).value;
-
-
   const clockOut =
     document.getElementById(
       "editClockOut"
     ).value;
-
-
   try {
-
     await supabaseFetch(
       `/attendance?id=eq.${encodeURIComponent(id)}`,
       {
@@ -1965,48 +1417,79 @@ async function saveAttendanceEdit() {
         })
       }
     );
-
-
     closeAttendanceModal();
-
     await loadAttendance();
-
     alert(
       "保存しました"
     );
-
   } catch(error) {
-
     console.error(error);
-
     alert(
       "保存に失敗しました"
     );
-
   }
-
 }
-
-
+/* =========================================================
+   DELETE ATTENDANCE
+========================================================= */
+async function deleteAttendanceRecord(
+  id
+) {
+  const record =
+    attendanceRecords.find(
+      r =>
+        String(r.id) ===
+        String(id)
+    );
+  if (!record) {
+    return;
+  }
+  const staff =
+    staffName(
+      record.staff_id
+    );
+  const ok =
+    confirm(
+      `この打刻記録を削除しますか？\n\n` +
+      `日付：${record.work_date || "-"}\n` +
+      `スタッフ：${staff}\n` +
+      `出勤：${record.clock_in || "-"}\n` +
+      `退勤：${record.clock_out || "-"}\n\n` +
+      `削除したデータは元に戻せません。`
+    );
+  if (!ok) {
+    return;
+  }
+  try {
+    await supabaseFetch(
+      `/attendance?id=eq.${encodeURIComponent(id)}`,
+      {
+        method: "DELETE"
+      }
+    );
+    await loadAttendance();
+    alert(
+      "削除しました"
+    );
+  } catch(error) {
+    console.error(error);
+    alert(
+      "削除に失敗しました"
+    );
+  }
+}
 /* =========================================================
    ATTENDANCE CSV
 ========================================================= */
-
 function exportAttendanceCSV() {
-
   if (
     !attendanceRecords.length
   ) {
-
     alert(
       "出力するデータがありません"
     );
-
     return;
-
   }
-
-
   const rows = [
     [
       "日付",
@@ -2015,11 +1498,8 @@ function exportAttendanceCSV() {
       "退勤"
     ]
   ];
-
-
   attendanceRecords.forEach(
     record => {
-
       rows.push([
         record.work_date || "",
         staffName(
@@ -2028,145 +1508,93 @@ function exportAttendanceCSV() {
         record.clock_in || "",
         record.clock_out || ""
       ]);
-
     }
   );
-
-
   downloadCSV(
     rows,
     "打刻一覧.csv"
   );
-
 }
-
-
 /* =========================================================
    SERVICE DATE
 ========================================================= */
-
 function setServiceThisMonth() {
-
   const today =
     todayISO();
-
   const first =
     today.substring(
       0,
       8
     ) + "01";
-
-
   document.getElementById(
     "serviceStartDate"
   ).value =
     first;
-
-
   document.getElementById(
     "serviceEndDate"
   ).value =
     today;
-
 }
-
-
 /* =========================================================
    SERVICE DASHBOARD
 ========================================================= */
-
 async function loadServiceDashboard() {
-
   const start =
     document.getElementById(
       "serviceStartDate"
     ).value;
-
-
   const end =
     document.getElementById(
       "serviceEndDate"
     ).value;
-
-
   const staffId =
     document.getElementById(
       "serviceStaffFilter"
     ).value;
-
-
   if (!start || !end) {
     return;
   }
-
-
   try {
-
     let recordQuery =
       `/service_records?select=*&service_date=gte.${start}&service_date=lte.${end}&order=service_date.desc,service_time.desc`;
-
-
     if (staffId) {
-
       recordQuery +=
         `&staff_id=eq.${encodeURIComponent(staffId)}`;
-
     }
-
-
     serviceRecords =
       await supabaseFetch(
         recordQuery
       );
-
-
     if (
       serviceRecords.length
     ) {
-
       const ids =
         serviceRecords
           .map(
             r => r.id
           )
           .join(",");
-
-
       servicePayments =
         await supabaseFetch(
           `/service_payments?select=*&service_record_id=in.(${ids})`
         );
-
     } else {
-
       servicePayments = [];
-
     }
-
-
     renderServiceDashboard();
-
   } catch(error) {
-
     console.error(error);
-
     alert(
       "サービスデータの読み込みに失敗しました。"
     );
-
   }
-
 }
-
-
 /* =========================================================
    SERVICE DASHBOARD RENDER
 ========================================================= */
-
 function getRecordPayments(
   recordId
 ) {
-
   return servicePayments.filter(
     p =>
       String(
@@ -2174,14 +1602,10 @@ function getRecordPayments(
       ) ===
       String(recordId)
   );
-
 }
-
-
 function getRecordTotal(
   recordId
 ) {
-
   return getRecordPayments(
     recordId
   )
@@ -2196,27 +1620,15 @@ function getRecordTotal(
       ),
     0
   );
-
 }
-
-
 function renderServiceDashboard() {
-
   renderServiceStats();
-
   renderPaymentStats();
-
   renderServiceStaffStats();
-
   renderServiceSourceStats();
-
   renderServiceRecords();
-
 }
-
-
 function renderServiceStats() {
-
   const total =
     serviceRecords.reduce(
       (
@@ -2227,58 +1639,40 @@ function renderServiceStats() {
         getRecordTotal(r.id),
       0
     );
-
-
   const count =
     serviceRecords.length;
-
-
   const average =
     count
       ? Math.round(
           total / count
         )
       : 0;
-
-
   const customers =
     serviceRecords.filter(
       r =>
         r.customer_name &&
         r.customer_name.trim()
     ).length;
-
-
   document.getElementById(
     "serviceTotalSales"
   ).textContent =
     yen(total);
-
-
   document.getElementById(
     "serviceRecordCount"
   ).textContent =
     count;
-
-
   document.getElementById(
     "serviceAverage"
   ).textContent =
     yen(average);
-
-
   document.getElementById(
     "serviceCustomerCount"
   ).textContent =
     customers;
-
 }
-
-
 /* =========================================================
    PAYMENT STATS
 ========================================================= */
-
 const PAYMENT_METHODS = [
   "現金",
   "PayPay",
@@ -2286,21 +1680,15 @@ const PAYMENT_METHODS = [
   "ポイント",
   "スマート"
 ];
-
-
 function renderPaymentStats() {
-
   const box =
     document.getElementById(
       "paymentStats"
     );
-
-
   box.innerHTML =
     PAYMENT_METHODS
       .map(
         method => {
-
           const total =
             servicePayments
               .filter(
@@ -2319,54 +1707,38 @@ function renderPaymentStats() {
                   ),
                 0
               );
-
-
           return `
             <div class="staff-stat">
-
               <div class="staff-stat-name">
                 ${escapeHtml(method)}
               </div>
-
               <div class="staff-stat-number">
                 ${yen(total)}
               </div>
-
             </div>
           `;
-
         }
       )
       .join("");
-
 }
-
-
 /* =========================================================
    STAFF SALES
 ========================================================= */
-
 function renderServiceStaffStats() {
-
   const box =
     document.getElementById(
       "serviceStaffStats"
     );
-
-
   box.innerHTML =
     staffList
       .map(
         staff => {
-
           const records =
             serviceRecords.filter(
               r =>
                 r.staff_id ===
                 staff.id
             );
-
-
           const total =
             records.reduce(
               (
@@ -2379,36 +1751,26 @@ function renderServiceStaffStats() {
                 ),
               0
             );
-
-
           return `
             <div class="staff-stat">
-
               <div class="staff-stat-name">
                 ${escapeHtml(
                   staff.name
                 )}
               </div>
-
               <div class="staff-stat-number">
                 ${records.length}件 /
                 ${yen(total)}
               </div>
-
             </div>
           `;
-
         }
       )
       .join("");
-
 }
-
-
 /* =========================================================
    SOURCE STATS
 ========================================================= */
-
 const CUSTOMER_SOURCES = [
   "Hot Pepper",
   "ネイリー",
@@ -2417,29 +1779,21 @@ const CUSTOMER_SOURCES = [
   "小紅書",
   "その他"
 ];
-
-
 function renderServiceSourceStats() {
-
   const box =
     document.getElementById(
       "serviceSourceStats"
     );
-
-
   box.innerHTML =
     CUSTOMER_SOURCES
       .map(
         source => {
-
           const records =
             serviceRecords.filter(
               r =>
                 r.customer_source ===
                 source
             );
-
-
           const total =
             records.reduce(
               (
@@ -2452,46 +1806,32 @@ function renderServiceSourceStats() {
                 ),
               0
             );
-
-
           return `
             <div class="staff-stat">
-
               <div class="staff-stat-name">
                 ${escapeHtml(source)}
               </div>
-
               <div class="staff-stat-number">
                 ${records.length}件 /
                 ${yen(total)}
               </div>
-
             </div>
           `;
-
         }
       )
       .join("");
-
 }
-
-
 /* =========================================================
    SERVICE RECORDS TABLE
 ========================================================= */
-
 function renderServiceRecords() {
-
   const body =
     document.getElementById(
       "serviceTableBody"
     );
-
-
   if (
     !serviceRecords.length
   ) {
-
     body.innerHTML =
       `<tr>
         <td colspan="8">
@@ -2500,23 +1840,16 @@ function renderServiceRecords() {
           </div>
         </td>
       </tr>`;
-
     return;
-
   }
-
-
   body.innerHTML =
     serviceRecords
       .map(
         record => {
-
           const payments =
             getRecordPayments(
               record.id
             );
-
-
           const paymentText =
             payments
               .map(
@@ -2526,17 +1859,13 @@ function renderServiceRecords() {
               .join(
                 " / "
               );
-
-
           return `
             <tr>
-
               <td>
                 ${escapeHtml(
                   record.service_date
                 )}
               </td>
-
               <td>
                 ${escapeHtml(
                   formatTime(
@@ -2544,7 +1873,6 @@ function renderServiceRecords() {
                   )
                 )}
               </td>
-
               <td>
                 ${escapeHtml(
                   staffName(
@@ -2552,28 +1880,24 @@ function renderServiceRecords() {
                   )
                 )}
               </td>
-
               <td>
                 ${escapeHtml(
                   record.customer_name ||
                   "-"
                 )}
               </td>
-
               <td>
                 ${escapeHtml(
                   record.customer_source ||
                   "-"
                 )}
               </td>
-
               <td>
                 ${escapeHtml(
                   paymentText ||
                   "-"
                 )}
               </td>
-
               <td>
                 <strong>
                   ${yen(
@@ -2583,144 +1907,99 @@ function renderServiceRecords() {
                   )}
                 </strong>
               </td>
-
               <td>
-
                 <button
                   class="action-button"
                   onclick="openServiceModal('${record.id}')"
                 >
                   編集
                 </button>
-
                 <button
                   class="action-button delete-button"
                   onclick="deleteServiceRecord('${record.id}')"
                 >
                   削除
                 </button>
-
               </td>
-
             </tr>
           `;
-
         }
       )
       .join("");
-
 }
-
-
 /* =========================================================
    SERVICE MODAL
 ========================================================= */
-
 function openServiceModal(
   id
 ) {
-
   const record =
     serviceRecords.find(
       r =>
         String(r.id) ===
         String(id)
     );
-
-
   if (!record) {
     return;
   }
-
-
   document.getElementById(
     "editServiceId"
   ).value =
     record.id;
-
-
   document.getElementById(
     "editServiceDate"
   ).value =
     record.service_date || "";
-
-
   document.getElementById(
     "editServiceTime"
   ).value =
     formatTimeForInput(
       record.service_time
     );
-
-
   document.getElementById(
     "editCustomerName"
   ).value =
     record.customer_name || "";
-
-
   document.getElementById(
     "editServiceStaff"
   ).value =
     record.staff_id;
-
-
   document.getElementById(
     "editCustomerSource"
   ).value =
     record.customer_source || "その他";
-
-
   document.getElementById(
     "editServiceNote"
   ).value =
     record.note || "";
-
-
   const payments =
     getRecordPayments(
       record.id
     );
-
-
   const container =
     document.getElementById(
       "editPayments"
     );
-
-
   container.innerHTML =
     "";
-
-
   if (
     payments.length
   ) {
-
     payments.forEach(
       p => {
-
         addServicePayment(
           p.payment_method,
           p.amount
         );
-
       }
     );
-
   } else {
-
     addServicePayment(
       "現金",
       0
     );
-
   }
-
-
   calculateServiceEditTotal();
-
-
   document
     .getElementById(
       "serviceModal"
@@ -2728,12 +2007,8 @@ function openServiceModal(
     .classList.remove(
       "hidden"
     );
-
 }
-
-
 function closeServiceModal() {
-
   document
     .getElementById(
       "serviceModal"
@@ -2741,55 +2016,38 @@ function closeServiceModal() {
     .classList.add(
       "hidden"
     );
-
 }
-
-
 /* =========================================================
    PAYMENT EDIT
 ========================================================= */
-
 function addServicePayment(
   method = "現金",
   amount = ""
 ) {
-
   const container =
     document.getElementById(
       "editPayments"
     );
-
-
   const row =
     document.createElement(
       "div"
     );
-
-
   row.className =
     "payment-row";
-
-
   const select =
     document.createElement(
       "select"
     );
-
-
   PAYMENT_METHODS.forEach(
     paymentMethod => {
-
       const option =
         document.createElement(
           "option"
         );
-
       option.value =
         paymentMethod;
-
       option.textContent =
         paymentMethod;
-
       if (
         paymentMethod ===
         method
@@ -2797,141 +2055,95 @@ function addServicePayment(
         option.selected =
           true;
       }
-
       select.appendChild(
         option
       );
-
     }
   );
-
-
   const input =
     document.createElement(
       "input"
     );
-
   input.type =
     "number";
-
   input.min =
     "0";
-
   input.step =
     "1";
-
   input.inputMode =
     "numeric";
-
   input.placeholder =
     "金額";
-
   input.value =
     amount || "";
-
-
   input.addEventListener(
     "input",
     calculateServiceEditTotal
   );
-
-
   const remove =
     document.createElement(
       "button"
     );
-
   remove.type =
     "button";
-
   remove.className =
     "remove-payment";
-
   remove.textContent =
     "×";
-
-
   remove.onclick =
     function() {
-
       row.remove();
-
       calculateServiceEditTotal();
-
     };
-
-
   row.appendChild(
     select
   );
-
   row.appendChild(
     input
   );
-
   row.appendChild(
     remove
   );
-
-
   container.appendChild(
     row
   );
-
 }
-
-
 function getServiceEditPayments() {
-
   const rows =
     document.querySelectorAll(
       "#editPayments .payment-row"
     );
-
-
   return Array.from(
     rows
   )
   .map(
     row => {
-
       const select =
         row.querySelector(
           "select"
         );
-
       const input =
         row.querySelector(
           "input"
         );
-
-
       return {
         payment_method:
           select.value,
-
         amount:
           Number(
             input.value || 0
           )
       };
-
     }
   )
   .filter(
     p =>
       p.amount > 0
   );
-
 }
-
-
 function calculateServiceEditTotal() {
-
   const payments =
     getServiceEditPayments();
-
-
   const total =
     payments.reduce(
       (
@@ -2942,187 +2154,119 @@ function calculateServiceEditTotal() {
         p.amount,
       0
     );
-
-
   document.getElementById(
     "editServiceTotal"
   ).textContent =
     yen(total);
-
 }
-
-
 /* =========================================================
    SAVE SERVICE
 ========================================================= */
-
 async function saveServiceEdit() {
-
   const id =
     document.getElementById(
       "editServiceId"
     ).value;
-
-
   const serviceDate =
     document.getElementById(
       "editServiceDate"
     ).value;
-
-
   const serviceTime =
     document.getElementById(
       "editServiceTime"
     ).value;
-
-
   const customerName =
     document.getElementById(
       "editCustomerName"
     ).value.trim();
-
-
   const staffId =
     document.getElementById(
       "editServiceStaff"
     ).value;
-
-
   const source =
     document.getElementById(
       "editCustomerSource"
     ).value;
-
-
   const note =
     document.getElementById(
       "editServiceNote"
     ).value.trim();
-
-
   const payments =
     getServiceEditPayments();
-
-
   if (!serviceDate) {
-
     alert(
       "日付を入力してください"
     );
-
     return;
-
   }
-
-
   if (!serviceTime) {
-
     alert(
       "時間を入力してください"
     );
-
     return;
-
   }
-
-
   if (!staffId) {
-
     alert(
       "スタッフを選択してください"
     );
-
     return;
-
   }
-
-
   if (!payments.length) {
-
     alert(
       "支払い金額を入力してください"
     );
-
     return;
-
   }
-
-
   try {
-
-    /* record */
-
     await supabaseFetch(
       `/service_records?id=eq.${encodeURIComponent(id)}`,
       {
         method: "PATCH",
-
         headers: {
           "Prefer":
             "return=minimal"
         },
-
         body:
           JSON.stringify({
-
             service_date:
               serviceDate,
-
             service_time:
               serviceTime,
-
             customer_name:
               customerName ||
               null,
-
             staff_id:
               staffId,
-
             customer_source:
               source,
-
             note:
               note ||
               null
-
           })
-
       }
     );
-
-
-    /* delete old payments */
-
     await supabaseFetch(
       `/service_payments?service_record_id=eq.${encodeURIComponent(id)}`,
       {
         method: "DELETE"
       }
     );
-
-
-    /* insert new payments */
-
     await supabaseFetch(
       "/service_payments",
       {
         method: "POST",
-
         headers: {
           "Prefer":
             "return=minimal"
         },
-
         body:
           JSON.stringify(
             payments.map(
               p => ({
                 service_record_id:
                   Number(id),
-
                 payment_method:
                   p.payment_method,
-
                 amount:
                   p.amount
               })
@@ -3130,99 +2274,62 @@ async function saveServiceEdit() {
           )
       }
     );
-
-
     closeServiceModal();
-
     await loadServiceDashboard();
-
     alert(
       "保存しました"
     );
-
   } catch(error) {
-
     console.error(error);
-
     alert(
       "保存に失敗しました"
     );
-
   }
-
 }
-
-
 /* =========================================================
    DELETE SERVICE
 ========================================================= */
-
 async function deleteServiceRecord(
   id
 ) {
-
   const ok =
     confirm(
       "このサービス記録を削除しますか？"
     );
-
-
   if (!ok) {
     return;
   }
-
-
   try {
-
     await supabaseFetch(
       `/service_records?id=eq.${encodeURIComponent(id)}`,
       {
         method: "DELETE"
       }
     );
-
-
     await loadServiceDashboard();
-
-
     alert(
       "削除しました"
     );
-
   } catch(error) {
-
     console.error(error);
-
     alert(
       "削除に失敗しました"
     );
-
   }
-
 }
-
-
 /* =========================================================
    SERVICE CSV
 ========================================================= */
-
 function exportServiceCSV() {
-
   if (
     !serviceRecords.length
   ) {
-
     alert(
       "出力するデータがありません"
     );
-
     return;
-
   }
-
-
   const rows = [
-
     [
       "日付",
       "時間",
@@ -3233,19 +2340,13 @@ function exportServiceCSV() {
       "合計",
       "メモ"
     ]
-
   ];
-
-
   serviceRecords.forEach(
     record => {
-
       const payments =
         getRecordPayments(
           record.id
         );
-
-
       const paymentText =
         payments
           .map(
@@ -3255,59 +2356,40 @@ function exportServiceCSV() {
           .join(
             " / "
           );
-
-
       rows.push([
-
         record.service_date ||
           "",
-
         formatTime(
           record.service_time
         ),
-
         staffName(
           record.staff_id
         ),
-
         record.customer_name ||
           "",
-
         record.customer_source ||
           "",
-
         paymentText,
-
         getRecordTotal(
           record.id
         ),
-
         record.note ||
           ""
-
       ]);
-
     }
   );
-
-
   downloadCSV(
     rows,
     "サービス記録.csv"
   );
-
 }
-
-
 /* =========================================================
    CSV
 ========================================================= */
-
 function downloadCSV(
   rows,
   filename
 ) {
-
   const csv =
     rows
       .map(
@@ -3326,12 +2408,8 @@ function downloadCSV(
             .join(",")
       )
       .join("\r\n");
-
-
   const bom =
     "\uFEFF";
-
-
   const blob =
     new Blob(
       [
@@ -3343,101 +2421,69 @@ function downloadCSV(
           "text/csv;charset=utf-8;"
       }
     );
-
-
   const url =
     URL.createObjectURL(
       blob
     );
-
-
   const a =
     document.createElement(
       "a"
     );
-
-
   a.href =
     url;
-
   a.download =
     filename;
-
   document.body.appendChild(
     a
   );
-
   a.click();
-
   a.remove();
-
   URL.revokeObjectURL(
     url
   );
-
 }
-
-
 /* =========================================================
    UTILITIES
 ========================================================= */
-
 function yen(
   amount
 ) {
-
   return "¥" +
     Number(
       amount || 0
     ).toLocaleString(
       "ja-JP"
     );
-
 }
-
-
 function formatTime(
   time
 ) {
-
   if (!time) {
     return "-";
   }
-
-
   return String(
     time
   ).substring(
     0,
     5
   );
-
 }
-
-
 function formatTimeForInput(
   time
 ) {
-
   if (!time) {
     return "";
   }
-
-
   return String(
     time
   ).substring(
     0,
     5
   );
-
 }
-
-
 function escapeHtml(
   value
 ) {
-
   return String(
     value ?? ""
   )
@@ -3461,14 +2507,10 @@ function escapeHtml(
     /'/g,
     "&#039;"
   );
-
 }
-
-
 /* =========================================================
    CLOSE MODAL BY BACKDROP
 ========================================================= */
-
 document
   .getElementById(
     "attendanceModal"
@@ -3476,20 +2518,14 @@ document
   .addEventListener(
     "click",
     function(e) {
-
       if (
         e.target ===
         this
       ) {
-
         closeAttendanceModal();
-
       }
-
     }
   );
-
-
 document
   .getElementById(
     "serviceModal"
@@ -3497,30 +2533,22 @@ document
   .addEventListener(
     "click",
     function(e) {
-
       if (
         e.target ===
         this
       ) {
-
         closeServiceModal();
-
       }
-
     }
   );
-
-
 /* =========================================================
    START
 ========================================================= */
-
 if (
   sessionStorage.getItem(
     "mona_admin_login"
   ) === "true"
 ) {
-
   document
     .getElementById(
       "loginScreen"
@@ -3528,7 +2556,6 @@ if (
     .classList.add(
       "hidden"
     );
-
   document
     .getElementById(
       "app"
@@ -3536,12 +2563,8 @@ if (
     .classList.remove(
       "hidden"
     );
-
   initializeApp();
-
 }
-
 </script>
-
 </body>
 </html>
